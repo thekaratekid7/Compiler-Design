@@ -1,1 +1,53 @@
+# Design and implement a Lexical analyser for a language and the lexical 
+# analyser should ignore reduntant spaces, tabs,  and new lines
 
+
+f=open("program.txt",'r')
+input=[]
+operators=[]
+oper=['+','-','*','/','%']
+tokens=[]
+tok=["import","if","else","elif","list","for","while","append"]
+special=[]
+spec=['!','@','#','$','^','&','(',')',']','[']
+identifier=[]
+
+def check_string(word):
+	
+	
+	
+	
+	if(word in spec):
+		return "special"
+	elif word in tok:
+		return "tokens"
+	elif(word in oper):
+		return "operator"
+	else:	
+		return "identifiers"
+		
+for word in f.read().split():
+	input.append(word)
+	str=check_string(word)
+	
+	if ( str == "operator" ) :
+		if word not in operators:
+			operators.append(word)
+		
+	elif(str=="tokens"):
+		if word not in tokens:
+			tokens.append(word)
+		
+	elif(str=="special"):
+		if word not in special:
+			special.append(word)
+	
+	elif(str=="identifiers"):
+		if word not in identifier:
+			identifier.append(word)
+		
+f.close()
+print ("\n\nOperators are: ", operators)
+print ("\n\nTokens are: ", tokens)
+print ("\n\nSpecial Characters are: ", special)
+print ("\n\nIdentifiers are: ", identifier)
