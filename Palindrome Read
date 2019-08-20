@@ -1,0 +1,20 @@
+import sys
+import os
+import string
+
+list=[]
+f=open("TEXT1.txt","r")
+
+for word in f.read().split():
+	list.append(word)
+
+for st in list:
+		st1=st[::-1]
+		
+		if (st1 == st):
+			print (st)
+
+f.close()
+	
+				
+
